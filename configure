@@ -307,6 +307,7 @@ External library support:
   --enable-opengl          enable OpenGL rendering [no]
   --enable-openssl         enable openssl, needed for https support
                            if gnutls, libtls or mbedtls is not used [no]
+  --enable-libquic         enable libquic [no]
   --enable-pocketsphinx    enable PocketSphinx, needed for asr filter [no]
   --disable-sndio          disable sndio support [autodetect]
   --disable-schannel       disable SChannel SSP, needed for TLS support on
@@ -1812,6 +1813,7 @@ EXTERNAL_LIBRARY_LIST="
     opengl
     pocketsphinx
     vapoursynth
+    libquic
 "
 
 HWACCEL_AUTODETECT_LIBRARY_LIST="
@@ -3408,6 +3410,7 @@ libsrt_protocol_deps="libsrt"
 libsrt_protocol_select="network"
 libssh_protocol_deps="libssh"
 libtls_conflict="openssl gnutls mbedtls"
+libquic_protocol_deps="librawquic"
 
 # filters
 afftdn_filter_deps="avcodec"
@@ -6276,6 +6279,7 @@ enabled libvmaf           && require_pkg_config libvmaf "libvmaf >= 1.3.9" libvm
 enabled libvo_amrwbenc    && require libvo_amrwbenc vo-amrwbenc/enc_if.h E_IF_init -lvo-amrwbenc
 enabled libvorbis         && require_pkg_config libvorbis vorbis vorbis/codec.h vorbis_info_init &&
                              require_pkg_config libvorbisenc vorbisenc vorbis/vorbisenc.h vorbis_encode_init
+enabled libquic            && require librawquic raw_quic_api.h RawQuicOpen -lrawquic
 
 enabled libvpx            && {
     enabled libvpx_vp8_decoder && {

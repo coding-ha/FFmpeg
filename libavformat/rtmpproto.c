@@ -2653,11 +2653,11 @@ static int rtmp_open(URLContext *s, const char *uri, int flags, AVDictionary **o
         if (port < 0)
             port = RTMP_DEFAULT_PORT;
         if (rt->listen)
-            ff_url_join(buf, sizeof(buf), "tcp", NULL, hostname, port,
+            ff_url_join(buf, sizeof(buf), "quic", NULL, hostname, port,
                         "?listen&listen_timeout=%d",
                         rt->listen_timeout * 1000);
         else
-            ff_url_join(buf, sizeof(buf), "tcp", NULL, hostname, port, NULL);
+            ff_url_join(buf, sizeof(buf), "quic", NULL, hostname, port, NULL);
     }
 
 reconnect:
