@@ -2071,6 +2071,34 @@ void av_register_output_format(AVOutputFormat *format);
  */
 int avformat_network_init(void);
 
+#if CONFIG_LIBCRONET
+/**
+ * Initialize cronet environment, must be called as early as possible.
+ *
+ * @return Error code.
+ */
+int av_format_cronet_init(const char *dns_config_server, const char *default_server);
+
+/**
+ * Uninitialize cronet environment.
+ */
+void av_format_cronet_uninit(void);
+
+#ifdef _WIN32
+/**
+ * Cronet initialize COM on current thread under Windows platform.
+ */
+void av_format_cronet_init_com(void);
+
+/**
+ * Cronet uninitialize COM on current thread under Windows platform,
+ * MUST be called from the same thread as av_format_cronet_init_com.
+ */
+void av_format_cronet_uninit_com(void);
+#endif  // #ifdef _WIN32
+#endif  // #if CONFIG_LIBCRONET
+
+
 /**
  * Undo the initialization done by avformat_network_init. Call it only
  * once for each time you called avformat_network_init.

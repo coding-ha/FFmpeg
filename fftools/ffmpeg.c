@@ -4846,6 +4846,7 @@ int main(int argc, char **argv)
     BenchmarkTimeStamps ti;
 
     init_dynload();
+    av_format_cronet_init("", "");
 
     register_exit(ffmpeg_cleanup);
 
