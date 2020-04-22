@@ -8,7 +8,7 @@ such as audio, video, subtitles and related metadata.
 
 * sh ./buid.sh
 * set up quic server with https://github.com/evansun922/nginx-quic
-* ffmpeg -i https://a.mp4
+* ffmpeg -i https://6.sixsix.site/test.mp4
 
 
 ## Libraries
